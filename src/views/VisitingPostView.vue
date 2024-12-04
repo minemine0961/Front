@@ -107,7 +107,7 @@ export default {
   methods: {
     async fetchPostData(postId) {
       try {
-        const response = await axios.get(`http://localhost:8080/posts/${postId}`, {
+        const response = await axios.get(`${process.env.VUE_APP_API_URL}/posts/${postId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
@@ -119,7 +119,7 @@ export default {
     },
     async fetchComments(postId) {
       try {
-        const response = await axios.get(`http://localhost:8080/posts/${postId}/comment/list`, {
+        const response = await axios.get(`${process.env.VUE_APP_API_URL}/posts/${postId}/comment/list`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
@@ -131,7 +131,7 @@ export default {
     },
     async fetchLikeCount(postId) {
       try {
-        const response = await axios.get(`http://localhost:8080/posts/${postId}/like-count`, {
+        const response = await axios.get(`${process.env.VUE_APP_API_URL}/posts/${postId}/like-count`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
@@ -152,7 +152,7 @@ export default {
       }
       try {
         const response = await axios.post(
-          `http://localhost:8080/posts/${this.post.postId}/comment/create`,
+          `${process.env.VUE_APP_API_URL}/posts/${this.post.postId}/comment/create`,
           { content: this.newComment },
           {
             headers: {
@@ -174,7 +174,7 @@ export default {
     async saveComment(id) {
       try {
         const response = await axios.put(
-          `http://localhost:8080/posts/${this.post.postId}/comment/${id}/update`,
+          `${process.env.VUE_APP_API_URL}/posts/${this.post.postId}/comment/${id}/update`,
           { content: this.editedComment },
           {
             headers: {
@@ -197,7 +197,7 @@ export default {
     async deleteComment(id) {
       try {
         await axios.delete(
-          `http://localhost:8080/posts/${this.post.postId}/comment/${id}/delete`,
+          `${process.env.VUE_APP_API_URL}/posts/${this.post.postId}/comment/${id}/delete`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -223,7 +223,7 @@ export default {
     async deletePost() {
       if (confirm('정말로 이 글을 삭제하시겠습니까?')) {
         try {
-          await axios.delete(`http://localhost:8080/posts/${this.post.postId}/delete`, {
+          await axios.delete(`${process.env.VUE_APP_API_URL}/posts/${this.post.postId}/delete`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
@@ -247,7 +247,7 @@ export default {
       try {
         // 서버에 좋아요 상태 전송
         const response = await axios.post(
-          `http://localhost:8080/posts/${postId}/push-like`,
+          `${process.env.VUE_APP_API_URL}/posts/${postId}/push-like`,
           {},
           {
             headers: {
@@ -276,7 +276,7 @@ export default {
       try {
         // API 요청을 통해 게시글 저장
         await axios.post(
-          `http://localhost:8080/posts/${this.post.postId}/save`,
+          `${process.env.VUE_APP_API_URL}/posts/${this.post.postId}/save`,
           {},
           {
             headers: {

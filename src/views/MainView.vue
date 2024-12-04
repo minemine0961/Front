@@ -66,7 +66,7 @@ export default {
       Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
     };
     axios
-      .get('http://localhost:8080/posts/list', { headers })
+      .get('${process.env.VUE_APP_API_URL}/posts/list', { headers })
       .then((response) => {
         console.log('서버 응답 데이터:', response.data);
         this.posts = Array.isArray(response.data) ? response.data : [];
@@ -105,7 +105,7 @@ export default {
   methods: {
     async fetchLikeCount(postId) {
       try {
-        const response = await axios.get(`http://localhost:8080/posts/${postId}/like-count`, {
+        const response = await axios.get(`${process.env.VUE_APP_API_URL}/posts/${postId}/like-count`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },

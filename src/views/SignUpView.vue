@@ -68,7 +68,7 @@ export default {
             username: this.username,
             agree: "true"
           };
-          const response = await axios.post('http://localhost:8080/api/user', requestBody);
+          const response = await axios.post('${process.env.VUE_APP_API_URL}/api/user', requestBody);
           if (response.data.success) {
             alert('회원가입이 완료되었습니다!');
             this.$router.push('/');

@@ -3,7 +3,7 @@ module.exports = {
     port: process.env.VUE_APP_PORT || 8081,
     proxy: {
       '/posts': {
-        target: 'http://localhost:8080', // API 서버 주소
+        target: process.env.VUE_APP_API_URL, // API 서버 주소
         changeOrigin: true,
       },
     },

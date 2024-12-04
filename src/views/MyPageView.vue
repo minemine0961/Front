@@ -111,7 +111,7 @@ export default {
         let response;
         switch (selectedBox.value) {
           case 0: // 내가 작성한 글
-            response = await axios.get('http://localhost:8080/mypage/my-posts', {
+            response = await axios.get('${process.env.VUE_APP_API_URL}/mypage/my-posts', {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
               },
@@ -122,7 +122,7 @@ export default {
             }));
             break;
           case 1: // 내가 쓴 댓글
-            response = await axios.get('http://localhost:8080/mypage/my-comments', {
+            response = await axios.get('${process.env.VUE_APP_API_URL}/mypage/my-comments', {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
               },
@@ -135,7 +135,7 @@ export default {
             }));
             break;
           case 2: // 내가 좋아요 누른 글
-            response = await axios.get('http://localhost:8080/mypage/liked-posts', {
+            response = await axios.get('${process.env.VUE_APP_API_URL}/mypage/liked-posts', {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
               },
@@ -146,7 +146,7 @@ export default {
             }));
             break;
           case 3: // 내가 저장한 글
-            response = await axios.get('http://localhost:8080/mypage/saved-posts', {
+            response = await axios.get('${process.env.VUE_APP_API_URL}/mypage/saved-posts', {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
               },

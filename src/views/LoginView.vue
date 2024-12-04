@@ -35,7 +35,7 @@ export default {
   methods: {
     async login() {
       try {
-        const response = await axios.post('http://localhost:8080/api/user/token', {
+        const response = await axios.post('${process.env.VUE_APP_API_URL}/api/user/token', {
           userId: this.userId,
           password: this.password,
         });

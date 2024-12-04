@@ -146,7 +146,7 @@ export default {
     },
     async loadPostData() {
       try {
-        const response = await axios.get(`http://localhost:8080/posts/${this.postId}`, {
+        const response = await axios.get(`${process.env.VUE_APP_API_URL}/posts/${this.postId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           },
@@ -186,8 +186,8 @@ export default {
       }
 
       const url = this.isEditMode
-        ? `http://localhost:8080/posts/${this.postId}/update`
-        : 'http://localhost:8080/posts/create';
+        ? `${process.env.VUE_APP_API_URL}/posts/${this.postId}/update`
+        : '${process.env.VUE_APP_API_URL}/posts/create';
 
       const method = this.isEditMode ? 'put' : 'post';
 
